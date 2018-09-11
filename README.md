@@ -3,14 +3,14 @@ Password Generator Program
 
 ## Hashs
 
-###MakePasswords.exe
+### MakePasswords.exe
 
 MD5       5FA31F8598A4FCB178BBD1C4E0452FDD
 
 SHA256    C67A51ABC4E54CB3489E5D77D664C2AE0F04801B3ACC60BAFD5EC3E8B40F1D82
 
 
-###MakePasswords.xls
+### MakePasswords.xls
 
 Does not use Cryptographically Secure Random Number Generator
 
