@@ -5,6 +5,8 @@ namespace MakePasswords
 {
     static class Program
     {
+        public static string strVersion = "V1.1";
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

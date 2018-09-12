@@ -15,6 +15,8 @@ namespace MakePasswords
         {
             InitializeComponent();
 
+            this.Text = "MakePasswords " + Program.strVersion;
+
             ddCVCLength.SelectedIndex = 0;
             this.Size = new Size(750, 500);
 
@@ -23,84 +25,9 @@ namespace MakePasswords
 
             lblNumWords.Text = "(" + iNumWords.ToString("#,###") + " Words)";
 
-            SetWordPasswordEntropy();
             SetMixedPasswordEntropy();
             SetCVCPasswordEntropy();
-        }
-
-
-        private void btnMake_Click(object sender, EventArgs e)
-        {
-            PasswordFunctions classPasswordFunctions = new PasswordFunctions();
-            if (!rbMixedPasswords.Checked && !rbWordPasswords.Checked && !rbCVCPasswords.Checked)
-            {
-                MessageBox.Show("Please choose a type of Password","Selection Needed");
-                return;
-            }
-
-            textPasswords.Text = "";
-            int numPasswords = (int)numPasswordsToMake.Value;
-            string strWordPasswordPattern = "";
-
-            // Validate Parameters for Mixed Character Passwords
-            if (rbMixedPasswords.Checked)
-            {
-                if (!cbUpperCase.Checked && !cbLowerCase.Checked && !cbDigits.Checked && !cbSpecial.Checked)
-                {
-                    MessageBox.Show("Please select at least one set of Characters to use","Selection Needed");
-                    return;
-                }
-
-                int iNumCharsets = 0;
-                if (cbUpperCase.Checked) iNumCharsets++;
-                if (cbLowerCase.Checked) iNumCharsets++;
-                if (cbDigits.Checked) iNumCharsets++;
-                if (cbSpecial.Checked) iNumCharsets++;
-
-                if (iNumCharsets > numMixedLength.Value)
-                {
-                    MessageBox.Show("" +
-                        "The program ensures that there will be at least one character " +
-                        "from each selected character set in each result. You have " +
-                        "selected " + iNumCharsets.ToString() + " Character Sets which means that it " +
-                        " is not possible to do this with a Password length of " + numMixedLength.Value.ToString() + ". " +
-                        "Please either reduce the number of selected character sets or " +
-                        "increase the password length", "Constraint Clash");
-                    return;
-                }
-            }
-
-            
-            // Validate Parameters for Word Passwords
-            if (rbWordPasswords.Checked)
-            {
-                strWordPasswordPattern = "".PadRight((int)numWords.Value, 'W');
-                strWordPasswordPattern += "".PadRight((int)numDigits.Value, 'D');
-                strWordPasswordPattern += "".PadRight((int)numSpecial.Value, 'S');
-
-                if (strWordPasswordPattern.Length == 0)
-                {
-                    MessageBox.Show("Word Passwords must have at least\n\rone Word, Digit or Special Character","Invalid Selection");
-                    return;
-                }
-            }
-
-
-            // Make passwords of the requested type
-            for (int i = 0; i < numPasswords; i++)
-            {
-                if (i != 0)
-                    textPasswords.Text += "\r\n";
-
-                if (rbMixedPasswords.Checked)
-                    textPasswords.Text += classPasswordFunctions.MakePasswordMixed(cbUpperCase.Checked, cbLowerCase.Checked, cbDigits.Checked, cbSpecial.Checked, (int)numMixedLength.Value);
-
-                if (rbWordPasswords.Checked)
-                    textPasswords.Text += classPasswordFunctions.MakePasswordWord(strWordPasswordPattern, cbRandom.Checked);
-
-                if (rbCVCPasswords.Checked)
-                    textPasswords.Text += classPasswordFunctions.MakePasswordCVC(Int32.Parse(ddCVCLength.SelectedItem.ToString()));
-            }
+            SetWordPasswordEntropy();
         }
 
 
@@ -173,32 +100,6 @@ namespace MakePasswords
         }
 
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            // Displays a SaveFileDialog so the user can save the passwords
-            if (textPasswords.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("No Passwords to Save","No Paswords Made");
-                return;
-            }
-
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-            saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            saveFileDialog1.Title = "Save Passwords to a File";
-            saveFileDialog1.ShowDialog();
-
-            // If the file name is not an empty string open it for saving.  
-            if (saveFileDialog1.FileName != "")
-            {
-                // Save Data
-                StreamWriter writer = new StreamWriter(saveFileDialog1.OpenFile());
-                writer.Write(textPasswords.Text);
-                writer.Close();
-            }
-        }
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
             RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\BaconDelight\MakePasswords");
@@ -263,12 +164,114 @@ namespace MakePasswords
             key.Close();
         }
 
-
-        private void lnkAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        
+        private void LnkAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Form2 popup = new Form2();
             DialogResult dialogresult = popup.ShowDialog();
             popup.Dispose();
+        }
+
+
+        private void BtnMake_Click(object sender, EventArgs e)
+        {
+            PasswordFunctions classPasswordFunctions = new PasswordFunctions();
+            if (!rbMixedPasswords.Checked && !rbWordPasswords.Checked && !rbCVCPasswords.Checked)
+            {
+                MessageBox.Show("Please choose a type of Password", "Selection Needed");
+                return;
+            }
+
+            textPasswords.Text = "";
+            int numPasswords = (int)numPasswordsToMake.Value;
+            string strWordPasswordPattern = "";
+
+            // Validate Parameters for Mixed Character Passwords
+            if (rbMixedPasswords.Checked)
+            {
+                if (!cbUpperCase.Checked && !cbLowerCase.Checked && !cbDigits.Checked && !cbSpecial.Checked)
+                {
+                    MessageBox.Show("Please select at least one set of Characters to use", "Selection Needed");
+                    return;
+                }
+
+                int iNumCharsets = 0;
+                if (cbUpperCase.Checked) iNumCharsets++;
+                if (cbLowerCase.Checked) iNumCharsets++;
+                if (cbDigits.Checked) iNumCharsets++;
+                if (cbSpecial.Checked) iNumCharsets++;
+
+                if (iNumCharsets > numMixedLength.Value)
+                {
+                    MessageBox.Show("" +
+                        "The program ensures that there will be at least one character " +
+                        "from each selected character set in each result. You have " +
+                        "selected " + iNumCharsets.ToString() + " Character Sets which means that it " +
+                        " is not possible to do this with a Password length of " + numMixedLength.Value.ToString() + ". " +
+                        "Please either reduce the number of selected character sets or " +
+                        "increase the password length", "Constraint Clash");
+                    return;
+                }
+            }
+
+
+            // Validate Parameters for Word Passwords
+            if (rbWordPasswords.Checked)
+            {
+                strWordPasswordPattern = "".PadRight((int)numWords.Value, 'W');
+                strWordPasswordPattern += "".PadRight((int)numDigits.Value, 'D');
+                strWordPasswordPattern += "".PadRight((int)numSpecial.Value, 'S');
+
+                if (strWordPasswordPattern.Length == 0)
+                {
+                    MessageBox.Show("Word Passwords must have at least\n\rone Word, Digit or Special Character", "Invalid Selection");
+                    return;
+                }
+            }
+
+
+            // Make passwords of the requested type
+            for (int i = 0; i < numPasswords; i++)
+            {
+                if (i != 0)
+                    textPasswords.Text += "\r\n";
+
+                if (rbMixedPasswords.Checked)
+                    textPasswords.Text += classPasswordFunctions.MakePasswordMixed(cbUpperCase.Checked, cbLowerCase.Checked, cbDigits.Checked, cbSpecial.Checked, (int)numMixedLength.Value);
+
+                if (rbWordPasswords.Checked)
+                    textPasswords.Text += classPasswordFunctions.MakePasswordWord(strWordPasswordPattern, cbRandom.Checked);
+
+                if (rbCVCPasswords.Checked)
+                    textPasswords.Text += classPasswordFunctions.MakePasswordCVC(Int32.Parse(ddCVCLength.SelectedItem.ToString()));
+            }
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            // Displays a SaveFileDialog so the user can save the passwords
+            if (textPasswords.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No Passwords to Save", "No Paswords Made");
+                return;
+            }
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog
+            {
+                Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                Title = "Save Passwords to a File"
+            };
+
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.  
+            if (saveFileDialog1.FileName != "")
+            {
+                // Save Data
+                StreamWriter writer = new StreamWriter(saveFileDialog1.OpenFile());
+                writer.Write(textPasswords.Text);
+                writer.Close();
+            }
         }
     }
 }

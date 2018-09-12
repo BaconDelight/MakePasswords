@@ -48,7 +48,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.BtnSave = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.numPasswordsToMake = new System.Windows.Forms.NumericUpDown();
             this.lblEntropyMixed = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.lblEntropyWord = new System.Windows.Forms.Label();
             this.lblEntropyCVC = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lnkAbout = new System.Windows.Forms.LinkLabel();
+            this.LnkAbout = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.numMixedLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSpecial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDigits)).BeginInit();
@@ -73,7 +73,7 @@
             this.btnMake.TabIndex = 0;
             this.btnMake.Text = "Make";
             this.btnMake.UseVisualStyleBackColor = true;
-            this.btnMake.Click += new System.EventHandler(this.btnMake_Click);
+            this.btnMake.Click += new System.EventHandler(this.BtnMake_Click);
             // 
             // textPasswords
             // 
@@ -294,16 +294,16 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "Number of Special Characters";
             // 
-            // btnSave
+            // BtnSave
             // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(1442, 266);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(199, 108);
-            this.btnSave.TabIndex = 21;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.BtnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSave.Location = new System.Drawing.Point(1442, 266);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(199, 108);
+            this.BtnSave.TabIndex = 21;
+            this.BtnSave.Text = "Save";
+            this.BtnSave.UseVisualStyleBackColor = true;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // label6
             // 
@@ -376,31 +376,31 @@
             this.menuStrip1.TabIndex = 28;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // lnkAbout
+            // LnkAbout
             // 
-            this.lnkAbout.AutoSize = true;
-            this.lnkAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnkAbout.Location = new System.Drawing.Point(1488, 420);
-            this.lnkAbout.Name = "lnkAbout";
-            this.lnkAbout.Size = new System.Drawing.Size(102, 39);
-            this.lnkAbout.TabIndex = 29;
-            this.lnkAbout.TabStop = true;
-            this.lnkAbout.Text = "about";
-            this.lnkAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkAbout_LinkClicked);
+            this.LnkAbout.AutoSize = true;
+            this.LnkAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.900001F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LnkAbout.Location = new System.Drawing.Point(1488, 420);
+            this.LnkAbout.Name = "LnkAbout";
+            this.LnkAbout.Size = new System.Drawing.Size(102, 39);
+            this.LnkAbout.TabIndex = 29;
+            this.LnkAbout.TabStop = true;
+            this.LnkAbout.Text = "about";
+            this.LnkAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkAbout_LinkClicked);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1852, 1112);
-            this.Controls.Add(this.lnkAbout);
+            this.Controls.Add(this.LnkAbout);
             this.Controls.Add(this.lblEntropyCVC);
             this.Controls.Add(this.lblEntropyWord);
             this.Controls.Add(this.lblNumWords);
             this.Controls.Add(this.lblEntropyMixed);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.numPasswordsToMake);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -460,7 +460,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numPasswordsToMake;
         private System.Windows.Forms.Label lblEntropyMixed;
@@ -468,7 +468,7 @@
         private System.Windows.Forms.Label lblEntropyWord;
         private System.Windows.Forms.Label lblEntropyCVC;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.LinkLabel lnkAbout;
+        private System.Windows.Forms.LinkLabel LnkAbout;
     }
 }
 

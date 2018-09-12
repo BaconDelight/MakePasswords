@@ -8,9 +8,11 @@ namespace MakePasswords
         public Form2()
         {
             InitializeComponent();
+
+            this.Label2.Text = "MakePasswords " + Program.strVersion;
         }
 
-        private void linkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel1_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
         {
             try
             {
@@ -26,12 +28,11 @@ namespace MakePasswords
         {
             // Change the color of the link text by setting LinkVisited   
             // to true.  
-            linkLabel1.LinkVisited = true;
+            LinkLabel1.LinkVisited = true;
 
             //Call the Process.Start method to open the default browser   
             //with a URL:  
-            MessageBox.Show("Not available yet");
-            // System.Diagnostics.Process.Start("https://github.com/libguestfs/hivex");
+            System.Diagnostics.Process.Start("https://github.com/BaconDelight/MakePasswords");
         }
     }
 }
