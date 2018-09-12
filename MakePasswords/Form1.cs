@@ -201,7 +201,7 @@ namespace MakePasswords
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\SuziBandit\MakePasswords");
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\BaconDelight\MakePasswords");
             if (key != null)
             {
                 int width = int.Parse(key.GetValue("Width").ToString());
@@ -233,7 +233,7 @@ namespace MakePasswords
 
         private void Form1_FormClosing(object sender, EventArgs e)
         {
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\SuziBandit\MakePasswords");
+            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\BaconDelight\MakePasswords");
             key.SetValue("Width", this.Width);
             key.SetValue("Height", this.Height);
 
