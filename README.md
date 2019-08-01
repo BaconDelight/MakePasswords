@@ -3,7 +3,14 @@ Password Generator Program
 
 ## Hashs
 
-### MakePasswords.exe
+### MakePasswords.exe and "MakePasswords (.NET 4.5).exe"
+
+MD5       02F0385A65A2076EE3FDDFAC01BF6F15
+
+SHA256    A4DEAC75C736D84480B7C3F27D2F4115A19F42A9AE17C39138E650E4681BE27E
+
+
+### "MakePasswords (.NET 3.5).exe"
 
 MD5       0A1DE0B62C74F014DA779376A92BA21D
 
